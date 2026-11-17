@@ -1,0 +1,35 @@
+{
+  "seed": 42,
+  "models": {
+    "primary": "gpt2-medium",
+    "comparator": "distilgpt2"
+  },
+  "data": {
+    "dataset": "trivia_qa",
+    "config_name": "rc.nocontext",
+    "split": "validation",
+    "n_total": 1500,
+    "n_reference": 500,
+    "n_stable_stream": 350,
+    "n_drift_stream": 350
+  },
+  "generation": {
+    "max_new_tokens": 50,
+    "do_sample": false,
+    "temperature": 1.0,
+    "prompt_template": "Q: {question}\nA:"
+  },
+  "monitors": {
+    "window_size": 150,
+    "acc_threshold_drop": 0.15,
+    "jsd_percentile": 95,
+    "mmd_percentile": 95,
+    "mmd_kernel_sigma": 1.0
+  },
+  "ablation": {
+    "window_sizes": [50, 100, 150, 200, 250]
+  },
+  "embedding_model": "all-MiniLM-L6-v2",
+  "results_dir": "results",
+  "figures_dir": "results/figures"
+}
